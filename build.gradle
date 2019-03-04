@@ -23,5 +23,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
 
-
+    implementation group: 'org.webjars', name: 'webjars-locator', version: '0.36'
+    implementation 'org.webjars:Semantic-UI:2.4.1'
+    implementation 'org.webjars:jquery:3.3.1-2'
 }
