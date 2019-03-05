@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.sql.Date;
 
@@ -13,7 +14,11 @@ public class JobListing implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String title,description;
+    @Size(min=5, max = 50)
+    private String title;
+
+    @Size(min=10,max=4096)
+    private String description;
 
     private Date lastApplication;
 

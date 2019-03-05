@@ -5,3 +5,6 @@ spring:
     active: dev
 server:
   port: 8000
+file:
+  upload-dir: ./uploads
+  acceptedTypes: .doc,.docx,.pdf,.txt,.wps,.odt,.rtf,.wpd

@@ -18,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Arrays;
 import java.util.UUID;
 
 @Service
@@ -26,6 +27,9 @@ public class FileStorageService {
     private final Path fileStorageLocation;
 
     private String value = "./uploads";
+
+    @Value("${file.acceptedTypes}")
+    private String[] acceptedTypes;
 
     @Autowired
     public FileStorageService() {
@@ -38,6 +42,10 @@ public class FileStorageService {
 
     public String storeFile(MultipartFile file) throws IOException {
             String ext = getFileExtension(file.getOriginalFilename());
+            Arrays.asList(acceptedTypes).forEach(System.out::println);
+            if(!Arrays.asList(acceptedTypes).contains(ext)){
+                throw new IOException("Unsupported File Type");
+            }
             String fileName;
             Path targetLocation;
             do{

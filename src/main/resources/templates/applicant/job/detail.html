@@ -27,5 +27,12 @@
     <form action="/applicant/job/upload-cv/"
           class="dropzone"
           id="my-awesome-dropzone"></form>
+    <script>
+        Dropzone.options.myAwesomeDropzone = {
+            paramName: "file", // The name that will be used to transfer the file
+            maxFilesize: 25, // MB
+            acceptedFiles:".doc,.docx,.pdf,.txt,.wps,.odt,.rtf,.wpd"
+        };
+    </script>
 </body>
 </html>

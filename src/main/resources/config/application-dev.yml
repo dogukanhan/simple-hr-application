@@ -35,5 +35,4 @@ spring:
       database-platform: org.hibernate.dialect.H2Dialect
   thymeleaf:
     cache: false
-file:
-  upload-dir: ./uploads
+
