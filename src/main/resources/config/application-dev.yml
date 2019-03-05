@@ -27,3 +27,5 @@ spring:
         hibernate.cache.use_query_cache: false
         hibernate.generate_statistics: true
       database-platform: org.hibernate.dialect.H2Dialect
+  thymeleaf:
+    cache: false

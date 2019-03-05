@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<h2>Job Listing Module</h2>
+<a th:href="@{/hr/manage/job-listing/editor}">Create Job List</a>
+<br/>
+    <th:block th:each="jobListing : ${jobListings}">
+      <a href="#"><li th:text="${jobListing.title}">Item</li> </a>
+        <a th:href="@{'/hr/manage/job-listing/editor/'+${jobListing.id}}">Update</a>
+        <a th:href="@{'/hr/manage/job-listing/remove/' + ${jobListing.id}}">Remove </a>
+        <br/>
+    </th:block>
+<hr/>
+<h2>Application Listing Module</h2>
 </body>
 </html>

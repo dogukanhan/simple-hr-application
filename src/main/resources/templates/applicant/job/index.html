@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Hr Application</title>
+    <link rel="stylesheet" href="/css/semantic.min.css" th:href="@{/webjars/Semantic-UI/semantic.css}" >
+    <script th:src="@{/webjars/jquery/jquery.js}"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.js}"></script>
+
+</head>
+<body>
+<th:block th:each="jobListing : ${jobListings}">
+    <a th:href="@{ 'detail/' + ${jobListing.id} }"><li th:text="${jobListing.title}">Item</li> </a>
+    <br/>
+</th:block>
+</body>
+</html>
