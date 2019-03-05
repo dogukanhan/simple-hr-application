@@ -26,4 +26,6 @@ dependencies {
     implementation group: 'org.webjars', name: 'webjars-locator', version: '0.36'
     implementation 'org.webjars:Semantic-UI:2.4.1'
     implementation 'org.webjars:jquery:3.3.1-2'
+    implementation 'org.webjars:dropzone:5.5.0'
+
 }

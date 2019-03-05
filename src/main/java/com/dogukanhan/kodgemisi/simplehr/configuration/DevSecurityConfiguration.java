@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 @Profile("dev")
 public class DevSecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    // FIXME: 3/5/19  csrf token for other pages.
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/hr/manage**")
@@ -18,6 +20,7 @@ public class DevSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/h2_console/**").permitAll()
                 .and().formLogin().and().csrf().ignoringAntMatchers("/h2-console/**");
         http.headers().frameOptions().disable();
+        http.csrf().disable();
 
 
     }

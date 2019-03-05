@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <title>Simple Hr Application</title>
     <link rel="stylesheet" href="/css/semantic.min.css" th:href="@{/webjars/Semantic-UI/semantic.css}" >
+    <link rel="stylesheet" href="/css/semantic.min.css" th:href="@{/webjars/dropzone/dropzone.css}" >
+
     <script th:src="@{/webjars/jquery/jquery.js}"></script>
     <script th:src="@{/webjars/Semantic-UI/semantic.js}"></script>
+    <script th:src="@{/webjars/dropzone/dropzone.js}"></script>
 
 </head>
 <body>
@@ -21,5 +24,8 @@
         <p>Resumse: <input type="file" th:field="*{resumeUrl}" /></p>
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>
+    <form action="/applicant/job/upload-cv/"
+          class="dropzone"
+          id="my-awesome-dropzone"></form>
 </body>
 </html>

@@ -3,6 +3,12 @@ logging:
     ROOT: DEBUG
     com.dogukanhan.kodgemisi.simplehr: DEBUG
 spring:
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 25MB
+      max-request-size: 30MB
   profiles:
     active: dev
   devtools:
@@ -29,3 +35,5 @@ spring:
       database-platform: org.hibernate.dialect.H2Dialect
   thymeleaf:
     cache: false
+file:
+  upload-dir: ./uploads
