@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.sql.Date;
@@ -22,7 +23,10 @@ public class JobListing implements Serializable {
 
     private Date lastApplication;
 
-    private short hireCount;
+    @Min(1)
+    private Integer hireCount;
+
+    private int totalApply;
 
     public long getId() {
         return id;
@@ -56,11 +60,19 @@ public class JobListing implements Serializable {
         this.lastApplication = lastApplication;
     }
 
-    public short getHireCount() {
+    public Integer getHireCount() {
         return hireCount;
     }
 
-    public void setHireCount(short hireCount) {
+    public void setHireCount(Integer hireCount) {
         this.hireCount = hireCount;
+    }
+
+    public int getTotalApply() {
+        return totalApply;
+    }
+
+    public void setTotalApply(int totalApply) {
+        this.totalApply = totalApply;
     }
 }

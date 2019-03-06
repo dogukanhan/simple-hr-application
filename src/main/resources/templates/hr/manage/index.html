@@ -1,20 +1,76 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<th:block th:insert="hr/manage/fragments/header :: headline">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Hr Managment Console</title>
+</th:block>
 </head>
 <body>
-<h2>Job Listing Module</h2>
-<a th:href="@{/hr/manage/job-listing/editor}">Create Job List</a>
-<br/>
-    <th:block th:each="jobListing : ${jobListings}">
-      <a href="#"><li th:text="${jobListing.title}">Item</li> </a>
-        <a th:href="@{'/hr/manage/job-listing/editor/'+${jobListing.id}}">Update</a>
-        <a th:href="@{'/hr/manage/job-listing/remove/' + ${jobListing.id}}">Remove </a>
-        <br/>
-    </th:block>
-<hr/>
-<h2>Application Listing Module</h2>
+<div class="ui container">
+
+    <div th:replace="hr/manage/fragments/header :: header">
+    </div>
+    <div class="ui segment">
+        <div class="ui grid">
+            <div class="eight wide column ui card">
+                <div class="content">
+                    <div class="header">Job Listing Module</div>
+                </div>
+                <div class="content">
+                    <div class="ui small feed">
+                        <div class="event">
+                            <div class="content">
+                                <div class="summary">
+                                    Total Job Listings: <a>20</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="extra content">
+                    <a class="ui button" th:href="@{/hr/manage/job-listing/editor}">
+                        Create Job List
+                    </a>
+                    <a class="ui button" th:href="@{/hr/manage/job-listing/list}">
+                        List Job Listings
+                    </a>
+                </div>
+            </div>
+            <div class="eight wide column ui card">
+            <div class="content">
+                <div class="header">Applicant Module</div>
+            </div>
+            <div class="content">
+                <div class="ui small feed">
+                    <div class="event">
+                        <div class="content">
+                            <div class="summary">
+                                New Applicant: <a>3</a>
+                                Total Applicant: <a>20</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="extra content">
+                <button class="ui button">Manage</button>
+                <button class="ui button">Cv Files</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+<!--<h2>Job Listing Module</h2>-->
+<!--<br/>-->
+    <!--<th:block th:each="jobListing : ${jobListings}">-->
+      <!--<a href="#"><li th:text="${jobListing.title}">Item</li> </a>-->
+        <!--<a th:href="@{'/hr/manage/job-listing/editor/'+${jobListing.id}}">Update</a>-->
+        <!--<a th:href="@{'/hr/manage/job-listing/remove/' + ${jobListing.id}}">Remove </a>-->
+        <!--<br/>-->
+    <!--</th:block>-->
+<!--<hr/>-->
+
+</div>
 </body>
 </html>

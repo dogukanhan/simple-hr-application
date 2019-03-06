@@ -1,0 +1,14 @@
+@media(min-width:723px) {
+    .container{
+        margin-top:30px;
+    }
+}
+.ui .card{
+    margin:0;
+}
+.hr-editor{
+    margin-top:30px;
+}
+#editor{
+    min-height: 150px;
+}

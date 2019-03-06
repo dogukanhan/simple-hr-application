@@ -24,7 +24,7 @@ public class TestDataService {
                     jsr.setTitle("test title");
                     jsr.setDescription("This is a desc for a job");
                     jsr.setLastApplication(Date.valueOf(LocalDate.now()));
-                    jsr.setHireCount((short)30);
+                    jsr.setHireCount(30);
                     jobListingRepository.save(jsr);
 
     }

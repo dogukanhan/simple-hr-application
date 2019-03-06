@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="hr/manage/fragments/header :: headline">
+        <meta charset="UTF-8">
+        <title>Hr Managment Console</title>
+    </th:block>
+</head>
+<body>
+<div class="ui container">
+    <div th:replace="hr/manage/fragments/header :: header"></div>
+    <div class="ui segment">
+        <div class="ui grid">
+            <table class="ui celled table">
+                <thead>
+                <tr><th>Number</th>
+                    <th>Title</th>
+                    <th>Number of hire</th>
+                    <th>Number of hire</th>
+                </tr></thead>
+                <tbody>
+                <tr>
+                    <td data-label="Name">James</td>
+                    <td data-label="Age">24</td>
+                    <td data-label="Job">Engineer</td>
+                </tr>
+                <tr>
+                    <td data-label="Name">Jill</td>
+                    <td data-label="Age">26</td>
+                    <td data-label="Job">Engineer</td>
+                </tr>
+                <tr>
+                    <td data-label="Name">Elyse</td>
+                    <td data-label="Age">24</td>
+                    <td data-label="Job">Designer</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

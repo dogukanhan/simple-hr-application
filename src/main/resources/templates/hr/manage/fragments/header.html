@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+        <th:block th:fragment="headline">
+            <meta charset="UTF-8">
+            <title>Hr Managment Console</title>
+            <link rel="stylesheet"  th:href="@{/webjars/Semantic-UI/semantic.css}" >
+            <link rel="stylesheet"  th:href="@{/webjars/semantic-ui-dropdown/dropdown.css}" >
+            <link rel="stylesheet"  th:href="@{/hr/manage/css/style.css}" >
+
+            <script th:src="@{/webjars/jquery/jquery.js}"></script>
+            <script th:src="@{/webjars/Semantic-UI/semantic.js}"></script>
+            <script th:src="@{/webjars/semantic-ui-dropdown/dropdown.js}"></script>
+
+        </th:block>
+</head>
+<body>
+    <div th:fragment="header">
+
+        <div class="ui pointing menu">
+            <a class="item active" th:href="@{/hr/manage}">
+                Hr Management Home
+            </a>
+            <div class="ui simple dropdown item">
+                Job Listing
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="item">Create New</div>
+                    <div class="item">List All</div>
+                </div>
+            </div>
+            <div class="ui simple dropdown item">
+                Applicant
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="item">List Applications</div>
+                    <div class="item">List Cv Files</div>
+                </div>
+            </div>
+            <div class="right menu">
+                <div class="item">
+                    <div class="ui primary button">Exit</div>
+                </div>
+            </div>
+        </div>
+        </div>
+</body>
+</html>

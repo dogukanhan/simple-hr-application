@@ -1,17 +1,94 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <th:block th:insert="hr/manage/fragments/header :: headline">
+        <meta charset="UTF-8">
+        <title>Hr Managment Console</title>
+    </th:block>
+    <link rel="stylesheet"  th:href="@{/webjars/quill/dist/quill.snow.css}" >
+    <link rel="stylesheet"  th:href="@{/webjars/flatpickr/dist/flatpickr.css}" >
+    <script th:src="@{/webjars/flatpickr/dist/flatpickr.js}"></script>
+
+
 </head>
 <body>
-<h1>Form</h1>
-    <form action="#" th:action="@{'#'}" th:object="${jobListing}" method="post">
-        <p>Job Title: <input type="text" th:field="*{title}" /></p>
-        <p>Job Description:  <input type="text" th:field="*{description}" /></p>
-        <p>Number of People to Hire: <input type="text" th:field="*{hireCount}" /></p>
-        <p>Last Application Date: <input type="text" th:field="*{lastApplication}" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-    </form>
+<div class="ui container">
+    <div th:replace="hr/manage/fragments/header :: header"></div>
+    <div class="ui grid">
+        <div class="four wide column"></div>
+        <div class="ten wide column center">
+            <form class="hr-editor" action="#" th:action="@{'#'}" th:object="${jobListing}" method="post">
+                <div th:if="${error}">
+                    <div class="ui negative message">
+                        <div class="header">
+                            Please check your given values.
+                        </div>
+                        <p th:text="${errorMessage}">That offer has expired
+                        </p>
+                    </div>
+                    <br/>
+                </div>
+                <div class="ui labeled input">
+                <div class="ui label">
+                        Job Title
+                 </div>
+                 <input th:min="5" th:max="50" type="text" size="60" th:field="*{title}" placeholder="Job Title" required/>
+                </div>
+                <br/><br/>
+                <div class="ui labeled input">
+                    <div class="ui label">
+                        Number of People to Hire
+                    </div>
+                    <input type="number" size="16" th:field="*{hireCount}" required />
+                </div>
+                <br/><br/>
+                <div class="ui labeled input">
+                    <div class="ui label">
+                        Last Application Date
+                    </div>
+                    <input type="text" id="lastAppDay" th:field="*{lastApplication}" required />                </div>
+                <br/><br/>
+                <div class="ui labeled input">
+                    <div class="ui label">
+                        Job Description
+                    </div>
+                </div>
+                <br/><br/>
+
+                <div id="editor">
+
+                </div>
+                <br/><br/>
+                <button class="ui primary button" th:type="submit">
+                    Save
+                </button>
+                <button class="ui button" type="reset">
+                    Discard
+                </button>
+                <input id="descriptionInput" th:type="text" th:field="*{description}" hidden/>
+            </form>
+        </div>
+        <div class="two wide column">
+
+        </div>
+    </div>
+</div>
+<script th:src="@{/webjars/quill/dist/quill.js}"></script>
+<script>
+    var quill = new Quill('#editor', {
+        theme: 'snow'
+    });
+    $("#lastAppDay").flatpickr({
+        minDate:"today"
+    });
+    $('.hr-editor').submit(function() {
+        $("#descriptionInput").val(quill.container.firstChild.innerHTML)
+        return true; // return false to cancel form action
+    });
+    $(document).ready(function () {
+        quill.container.firstChild.innerHTML =  $("#descriptionInput").val()
+    })
+
+</script>
 </body>
 </html>

@@ -25,7 +25,10 @@ dependencies {
 
     implementation group: 'org.webjars', name: 'webjars-locator', version: '0.36'
     implementation 'org.webjars:Semantic-UI:2.4.1'
+    implementation 'org.webjars.npm:semantic-ui-dropdown:2.4.1'
     implementation 'org.webjars:jquery:3.3.1-2'
     implementation 'org.webjars:dropzone:5.5.0'
+    implementation 'org.webjars.npm:quill:2.0.0-dev.3'
+    implementation 'org.webjars.npm:flatpickr:4.5.2'
 
 }
