@@ -1,38 +1,80 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Simple Hr Application</title>
-    <link rel="stylesheet" href="/css/semantic.min.css" th:href="@{/webjars/Semantic-UI/semantic.css}" >
+    <th:block th:insert="applicant/job/fragments/header :: headline">
+        <meta charset="UTF-8">
+        <title>Job Applicant</title>
+    </th:block>
+
     <link rel="stylesheet" href="/css/semantic.min.css" th:href="@{/webjars/dropzone/dropzone.css}" >
-
-    <script th:src="@{/webjars/jquery/jquery.js}"></script>
-    <script th:src="@{/webjars/Semantic-UI/semantic.js}"></script>
     <script th:src="@{/webjars/dropzone/dropzone.js}"></script>
-
 </head>
 <body>
-    <br/>
+<div class="ui container">
+    <div class="job-container">
+        <div th:replace="applicant/job/fragments/header :: header"></div>
+        <div class="ui segment">
+            <h1 class="ui header center aligned" th:text="${jobListing.title}"> Job</h1>
+            <div class="ui segment">
+        <h5 class="ui header right aligned" th:text="${'Last Application: ' + jobListing.lastApplication}"></h5>
+        <h5 class="ui header right aligned" th:text="${jobListing.hireCount + ' people will be hired'}"></h5>
+        <div class="ui segment center aligned">
+        <p th:text="${jobListing.description}"></p>
+        </div>
+    </div>
+            <h2>Apply For This Job</h2>
 
-    <p th:text="${jobListing.title}"> Job</p>
-    <h1>Apply</h1>
-    <form action="#" th:action="@{'#'}" th:object="${jobApplication}" method="post">
-        <p>Name: <input type="text" th:field="*{name}" /></p>
-        <p>Email:  <input type="text" th:field="*{email}" /></p>
-        <p>Adress: <input type="text" th:field="*{address}" /></p>
-        <p>Toughts On Job: <input type="text" th:field="*{toughtsOnJob}" /></p>
-        <p>Resumse: <input type="file" th:field="*{resumeUrl}" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-    </form>
-    <form action="/applicant/job/upload-cv/"
-          class="dropzone"
-          id="my-awesome-dropzone"></form>
+            <div class="ui  segment">
+        <form action="#" th:action="@{'#'}" th:object="${jobApplication}" method="post">
+            <div class="ui labeled input">
+                <div class="ui label">
+                    Name
+                </div>
+                <input type="text"  th:field="*{name}" required />
+            </div>
+            <div class="ui labeled input">
+                <div class="ui label">
+                    Surname
+                </div>
+                <input type="text"  th:field="*{surname}" required />
+            </div>
+            <br/><br/>
+            <div class="ui labeled input">
+                <div class="ui label">
+                    Email
+                </div>
+                <input type="text"  th:field="*{email}" required />
+            </div>
+            <br/><br/>
+            <div class="ui labeled input">
+                <div class="ui label">
+                    Adress
+                </div>
+                <textarea type="text"  th:field="*{address}" required > </textarea>
+            </div>
+            <br/><br/>
+            <div class="ui labeled input">
+                <div class="ui label">
+                    Toughts On Job
+                </div>
+                <textarea type="text"  th:field="*{toughtsOnJob}" required > </textarea>
+            </div>
+            <input class="ui button primary " type="submit" value="Submit" />
+t
+            <p>Resumse: <input type="text" th:field="*{resumeUrl}" /></p>
+        </form>
+        <form action="/applicant/job/upload-cv/"
+              class="dropzone"
+              id="my-awesome-dropzone"></form>
+            </div>
     <script>
+
         Dropzone.options.myAwesomeDropzone = {
             paramName: "file", // The name that will be used to transfer the file
             maxFilesize: 25, // MB
             acceptedFiles:".doc,.docx,.pdf,.txt,.wps,.odt,.rtf,.wpd"
         };
     </script>
+        </div></div></div>
 </body>
 </html>

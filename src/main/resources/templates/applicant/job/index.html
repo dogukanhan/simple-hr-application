@@ -1,18 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Simple Hr Application</title>
-    <link rel="stylesheet" href="/css/semantic.min.css" th:href="@{/webjars/Semantic-UI/semantic.css}" >
-    <script th:src="@{/webjars/jquery/jquery.js}"></script>
-    <script th:src="@{/webjars/Semantic-UI/semantic.js}"></script>
-
+    <th:block th:insert="applicant/job/fragments/header :: headline">
+        <meta charset="UTF-8">
+        <title>Job Applicant</title>
+    </th:block>
 </head>
 <body>
-<th:block th:each="jobListing : ${jobListings}">
-    <a th:href="@{ 'detail/' + ${jobListing.id} }"><li th:text="${jobListing.title}">Item</li> </a>
-    <br/>
-    ss
-</th:block>
+<div class="ui container">
+    <div class="job-container">
+        <div th:replace="applicant/job/fragments/header :: header"></div>
+
+        <div class="ui segment">
+        <div class="ui cards">
+            <div th:each="jobListing : ${jobListings}" class="card">
+                <div class="content">
+                    <div class="header">
+                        <p th:text="*{jobListing.title}"> </p>
+                    </div>
+                    <div class="meta">
+                        <p th:text="${jobListing.hireCount + ' person will be hired.'}"></p> <p> </p>
+                    </div>
+                    <div class="description">
+                        Last Application <b th:text="${jobListing.lastApplication}"></b>
+                    </div>
+                </div>
+                <div class="extra content">
+                    <div class="ui two buttons">
+
+                        <a th:href="@{'/applicant/job/detail/' + ${jobListing.id} }" class="ui basic green button">
+                                Detail | Apply
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
 </body>
 </html>

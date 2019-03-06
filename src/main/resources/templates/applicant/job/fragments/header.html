@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+        <th:block th:fragment="headline">
+            <meta charset="UTF-8">
+            <title>Job Applicant Page</title>
+            <link rel="stylesheet"  th:href="@{/webjars/Semantic-UI/semantic.css}" >
+            <link rel="stylesheet" th:href="@{/applicant/job/css/style.css}" >
+            <script th:src="@{/webjars/jquery/jquery.js}"></script>
+            <script th:src="@{/webjars/Semantic-UI/semantic.js}"></script>
+        </th:block>
+</head>
+<body>
+    <div th:fragment="header">
+        <div class="ui pointing menu">
+            <a class="active item" th:href="@{/applicant/job/}">
+                JOBS
+            </a>
+        </div>
+    </div>
+</body>
+</html>
