@@ -13,26 +13,27 @@
         <div class="ui grid">
             <table class="ui celled table">
                 <thead>
-                <tr><th>Number</th>
+                <tr><th>ID</th>
                     <th>Title</th>
                     <th>Number of hire</th>
-                    <th>Number of hire</th>
+                    <th>Last Apply Date</th>
+                    <th>Total Apply</th>
+                    <th></th>
                 </tr></thead>
                 <tbody>
-                <tr>
-                    <td data-label="Name">James</td>
-                    <td data-label="Age">24</td>
-                    <td data-label="Job">Engineer</td>
-                </tr>
-                <tr>
-                    <td data-label="Name">Jill</td>
-                    <td data-label="Age">26</td>
-                    <td data-label="Job">Engineer</td>
-                </tr>
-                <tr>
-                    <td data-label="Name">Elyse</td>
-                    <td data-label="Age">24</td>
-                    <td data-label="Job">Designer</td>
+                <tr th:each="jobListing: ${jobListings}">
+                    <td th:text="${jobListing.id}" data-label="Id">2</td>
+                    <td th:text="${jobListing.title}" data-label="Title">Simple Title</td>
+                    <td th:text="${jobListing.hireCount}"data-label="Number Of Hire">10</td>
+                    <td th:text="${jobListing.lastApplication}" data-label="Last Application">2019/03/03</td>
+                    <td th:text="${jobListing.totalApply}" data-label="Total Apply">100</td>
+                    <td class="center aligned">
+                        <a class="ui button " href="#" >Preview</a>
+                        <a class="ui button " href="#"
+                           th:href="@{'/hr/manage/job-listing/editor/' + ${jobListing.id} }"
+                        >Edit</a>
+                        <a class="ui button primary" href="#">Remove</a>
+                    </td>
                 </tr>
                 </tbody>
             </table>

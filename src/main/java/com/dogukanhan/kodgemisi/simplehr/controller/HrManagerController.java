@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import javax.validation.ValidationException;
 
 @Controller
 @RequestMapping("/hr/manage")
@@ -20,13 +19,14 @@ public class HrManagerController {
     private JobListingRepository jobListingRepository;
 
     @GetMapping
-    public String index(Model model){
-        model.addAttribute("jobListings",jobListingRepository.findAll());
+    public String index(){
         return "hr/manage/index";
     }
 
     @GetMapping("/job-listing/list")
-    public String jobListingList(){
+    public String jobListingList(Model model){
+        model.addAttribute("jobListings",jobListingRepository.findAll());
+
         return "hr/manage/job_listing/list";
     }
 
@@ -52,6 +52,7 @@ public class HrManagerController {
     try {
         jobListingRepository.save(jobListing);
         model.addAttribute("error",false);
+        return "redirect:/hr/manage/job_listing/list";
     }catch(ConstraintViolationException e){
         model.addAttribute("error",true);
         ConstraintViolation c = e.getConstraintViolations().iterator().next();

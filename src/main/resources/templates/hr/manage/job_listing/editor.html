@@ -14,10 +14,11 @@
 <body>
 <div class="ui container">
     <div th:replace="hr/manage/fragments/header :: header"></div>
+    <div class="ui segment">
     <div class="ui grid">
         <div class="four wide column"></div>
         <div class="ten wide column center">
-            <form class="hr-editor" action="#" th:action="@{'#'}" th:object="${jobListing}" method="post">
+            <form class="hr-editor" action="#" th:action="@{'/hr/manage/job-listing/editor'}" th:object="${jobListing}" method="post">
                 <div th:if="${error}">
                     <div class="ui negative message">
                         <div class="header">
@@ -66,7 +67,9 @@
                     Discard
                 </button>
                 <input id="descriptionInput" th:type="text" th:field="*{description}" hidden/>
+                <input type="text" th:field="*{id}" hidden/>
             </form>
+        </div>
         </div>
         <div class="two wide column">
 
