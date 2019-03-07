@@ -1,9 +1,6 @@
 package com.dogukanhan.kodgemisi.simplehr.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
@@ -31,6 +28,10 @@ public class JobApplication {
 
     @Size(min=25,max=350)
     private String toughtsOnJob;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="JOB_LISTING")
+    private JobListing jobListing;
 
     public long getId() {
         return id;
@@ -86,5 +87,13 @@ public class JobApplication {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public JobListing getJobListing() {
+        return jobListing;
+    }
+
+    public void setJobListing(JobListing jobListing) {
+        this.jobListing = jobListing;
     }
 }

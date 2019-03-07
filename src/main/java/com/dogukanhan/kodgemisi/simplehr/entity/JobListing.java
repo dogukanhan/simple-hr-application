@@ -1,13 +1,11 @@
 package com.dogukanhan.kodgemisi.simplehr.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 public class JobListing implements Serializable {
@@ -27,6 +25,9 @@ public class JobListing implements Serializable {
     private Integer hireCount;
 
     private int totalApply;
+
+    @OneToMany(mappedBy = "jobListing")
+    private List<JobApplication> applicationList;
 
     public long getId() {
         return id;
@@ -74,5 +75,13 @@ public class JobListing implements Serializable {
 
     public void setTotalApply(int totalApply) {
         this.totalApply = totalApply;
+    }
+
+    public List<JobApplication> getApplicationList() {
+        return applicationList;
+    }
+
+    public void setApplicationList(List<JobApplication> applicationList) {
+        this.applicationList = applicationList;
     }
 }
