@@ -1,4 +1,4 @@
-package com.dogukanhan.kodgemisi.simplehr.controller;
+package com.dogukanhan.kodgemisi.simplehr.controller.applicant.job;
 
 import com.dogukanhan.kodgemisi.simplehr.entity.JobApplication;
 import com.dogukanhan.kodgemisi.simplehr.entity.JobListing;
@@ -53,6 +53,7 @@ public class ApplicantJobController {
             jobApplication.setJobListing(jobListing);
             jobApplicationRepository.save(jobApplication);
             jobListing.getApplicationList().add(jobApplication);
+            jobListing.setTotalApply(jobListing.getTotalApply()+1);
             jobListingRepository.save(jobListing);
             model.addAttribute("error",false);
             model.addAttribute("complete",true);

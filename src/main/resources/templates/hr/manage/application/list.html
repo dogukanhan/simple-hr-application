@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="hr/manage/fragments/header :: headline">
+        <meta charset="UTF-8">
+        <title>Hr Managment Console</title>
+    </th:block>
+</head>
+<body>
+<div class="ui container">
+    <div th:replace="hr/manage/fragments/header :: header"></div>
+    <div class="ui segment">
+        <div class="ui grid">
+            <table class="ui celled table">
+                <thead>
+                <tr>
+                    <th>Job Listing</th>
+                    <th>Name Surname</th>
+                    <th>Email</th>
+                    <th> </th>
+                </tr></thead>
+                <tbody>
+                <tr th:each="jobApplication: ${jobApplications}">
+                    <td th:text="${jobApplication.jobListing.title}" data-label="Job Listing">100</td>
+                    <td th:text="${jobApplication.name}  + ' '+ ${jobApplication.surname} " data-label="Name Surname">Simple Title</td>
+                    <td th:text="${jobApplication.email}"data-label="Email">10</td>
+                    <td class="center aligned">
+                        <a class="ui button" th:href="@{'/hr/manage/application/detail/'+${jobApplication.id}}" >Detail</a>
+                        <a class="ui button primary " target="_blank"
+                           th:href="@{'/hr/manage/application/cv/' + ${jobApplication.resumeUrl} }"
+                        >Download Resume</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    function onRemove(id ){
+        console.log(id);
+        var config = confirm("Confirm to remove Job Listing?");
+        if(config){
+            window.location.replace("/hr/manage/job-listing/remove/"+id);
+
+        }
+    }
+</script>
+</body>
+</html>

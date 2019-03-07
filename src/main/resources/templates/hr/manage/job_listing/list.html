@@ -28,11 +28,11 @@
                     <td th:text="${jobListing.lastApplication}" data-label="Last Application">2019/03/03</td>
                     <td th:text="${jobListing.totalApply}" data-label="Total Apply">100</td>
                     <td class="center aligned">
-                        <a class="ui button " href="#" >Preview</a>
+                        <a target="_blank" class="ui button" th:href="@{'/applicant/job/detail/'+${jobListing.id}}" >Preview</a>
                         <a class="ui button " href="#"
                            th:href="@{'/hr/manage/job-listing/editor/' + ${jobListing.id} }"
                         >Edit</a>
-                        <a class="ui button primary" href="#">Remove</a>
+                        <a class="ui button primary" th:onclick="'javascript:onRemove(' + ${jobListing.id} + ')'">Remove</a>
                     </td>
                 </tr>
                 </tbody>
@@ -40,5 +40,15 @@
         </div>
     </div>
 </div>
+<script>
+    function onRemove(id ){
+        console.log(id);
+        var config = confirm("Confirm to remove Job Listing?");
+        if(config){
+            window.location.replace("/hr/manage/job-listing/remove/"+id);
+
+        }
+    }
+</script>
 </body>
 </html>
