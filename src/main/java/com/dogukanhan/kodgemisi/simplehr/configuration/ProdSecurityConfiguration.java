@@ -13,7 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class ProdSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/hr/manage**")
+        http.authorizeRequests().antMatchers("/hr/manage/**")
                 .hasAnyRole("ADMIN","USER");
 
 
