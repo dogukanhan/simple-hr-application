@@ -27,7 +27,7 @@ public class JobApplication {
     private String resumeUrl;
 
     @Size(min=25,max=350)
-    private String toughtsOnJob;
+    private String thoughtsOnJob;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="JOB_LISTING")
@@ -73,12 +73,13 @@ public class JobApplication {
         this.resumeUrl = resumeUrl;
     }
 
-    public String getToughtsOnJob() {
-        return toughtsOnJob;
+
+    public String getThoughtsOnJob() {
+        return thoughtsOnJob;
     }
 
-    public void setToughtsOnJob(String toughtsOnJob) {
-        this.toughtsOnJob = toughtsOnJob;
+    public void setThoughtsOnJob(String thoughtsOnJob) {
+        this.thoughtsOnJob = thoughtsOnJob;
     }
 
     public String getSurname() {

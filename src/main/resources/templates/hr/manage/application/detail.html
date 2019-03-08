@@ -12,16 +12,15 @@
     <div class="ui segment">
         <div class="ui grid">
 
-
-                    <td th:text="${jobApplication.name}  + ' '+ ${jobApplication.surname} " data-label="Name Surname">Simple Title</td>
-                    <td th:text="${jobApplication.email}"data-label="Email">10</td>
-                    <td th:text="${jobApplication.jobListing.title}" data-label="Job Listing">100</td>
-                    <td class="center aligned">
-                        <a target="_blank" class="ui button" th:href="@{'/hr/manage/application/detail/'+${jobApplication.id}}" >Detail</a>
+                      <p th:text="${jobApplication.jobListing.title}" data-label="Job Listing">100</p>
+                    <p th:text="${jobApplication.name}  + ' '+ ${jobApplication.surname} " data-label="Name Surname">Simple Title</p>
+                    <p th:text="${jobApplication.email}"data-label="Email">10</p>
+                    <p th:text="${jobApplication.thoughtsOnJob}"></p>
+                    <p class="center aligned">
                         <a class="ui button primary " href="#" target="_blank"
                            th:href="@{'/hr/manage/appllication/cv/' + ${jobApplication.resumeUrl} }"
                         >Preview Resume</a>
-                    </td>
+                    </p>
 
         </div>
     </div>

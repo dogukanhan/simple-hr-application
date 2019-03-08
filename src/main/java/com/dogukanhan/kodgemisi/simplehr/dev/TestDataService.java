@@ -37,7 +37,7 @@ public class TestDataService {
                        jobApplication.setEmail("123@123.com");
                        jobApplication.setSurname("HAN");
                        jobApplication.setName("Dogukan");
-                       jobApplication.setToughtsOnJob("This is toughts on job toghs on ladjfajkdfjadsf dads");
+                       jobApplication.setThoughtsOnJob("This is toughts on job toghs on ladjfajkdfjadsf dads");
                        jobApplication.setResumeUrl("f606e7b3-c8cd-4465-a594-4b1772ae0776.pdf");
                        jobApplicationRepository.save(jobApplication);
     }
